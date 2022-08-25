@@ -29,7 +29,7 @@ function Filter({openDialog, setOpenDialog, operators, dataToFilter, setFiltered
     return {...obj, checked: true};
   })
   const [selectedOperators, setSelectedOperators] = useState(initialStateOperators);
-  const operatorsFilters = selectedOperators.map(o => o.checked === true ? o.name : null).filter(i => i !== null);
+  const operatorsFilters = selectedOperators.map(o => o.checked ? o.name : null).filter(i => i !== null);
 
   const updateState = (item) => {
     const newState = selectedOperators.map(obj => {
@@ -48,19 +48,21 @@ function Filter({openDialog, setOpenDialog, operators, dataToFilter, setFiltered
         return {...obj, checked: false};
       });
       setSelectedOperators(newState);
-
     } else {
       const newState = selectedOperators.map(obj => {
         return {...obj, checked: true};
       });
       setSelectedOperators(newState);
-
     }
   }
 
   // Density
-  const initialStateDensity = [{name: "ACR A", checked: true},
-    {name: "ACR B", checked: true}, {name: "ACR C", checked: true}, {name: "ACR D", checked: true}]
+  const initialStateDensity = [
+    {name: "ACR A", checked: true},
+    {name: "ACR B", checked: true},
+    {name: "ACR C", checked: true},
+    {name: "ACR D", checked: true}]
+
   const [selectedDensity, setSelectedDensity] = useState(initialStateDensity);
 
   const densityFilters = selectedDensity.map(d => d.checked === true ? d.name : null).filter(i => i !== null);
@@ -105,6 +107,7 @@ function Filter({openDialog, setOpenDialog, operators, dataToFilter, setFiltered
     });
   }
 
+// Effects: after clicking onAccept the real filter function is running
   useEffect(() => {
     const filterData = dataToFilter.filter(item => {
       if (filter.density.some(key => item.density === key) && filter.operators.some(key => item.operator === key)) {

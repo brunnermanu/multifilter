@@ -63,6 +63,7 @@ function App() {
         operators={operators}
         dataToFilter={dataToFilter}
         setFilteredData={setFilteredData}/>
+
       <div style={{padding: "20px", display: "flex", flexDirection: "column", gap: "20px"}}>
         {filteredData.map((item, i) =>
           <div

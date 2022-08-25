@@ -1,6 +1,4 @@
 import React from "react";
-
-
 import { Button, Chip, Grid, Typography } from "@mui/material";
 
 
@@ -9,7 +7,6 @@ const selectionBox = {
   flexDirection: "row",
   flexWrap: "wrap",
   gap: "10px",
-
 }
 
 const titleFilterCard = {
@@ -30,19 +27,6 @@ const buttonStyles = {
 const buttonStylesFilled = {
   backgroundColor: "#D81B60", color: "#ffffff", boxShadow: "none"
 }
-//
-// const checkbox = {
-//   transform: "scale(1.1)",
-// }
-//
-// const InstitutionsButton = {
-//   marginLeft: 'auto'
-// }
-//
-// const SelectButton = {
-//   marginLeft: '1%'
-// }
-
 
 export function MultiSelect(props) {
   const allItemsSelected = props.selected.every(i => i.checked);
@@ -64,7 +48,6 @@ export function MultiSelect(props) {
           </Grid>
           <Grid item>
             <Button
-              // variant="outlined"
               variant={
                 allItemsSelected
                   ? "outlined"
@@ -88,7 +71,6 @@ export function MultiSelect(props) {
                     color={item.checked ? "primary" : "default"}
                     onClick={() => props.handleClick(item)}
                     style={item.checked ? {backgroundColor: "#D81B60"} : {backgroundColor: "#d7d3d3"}}/>
-
             ))}
           </div>
         </Grid>

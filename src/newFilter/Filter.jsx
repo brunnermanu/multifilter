@@ -93,6 +93,11 @@ function Filter({openDialog, setOpenDialog, operators, dataToFilter, setFiltered
   // Filter
   const [filter, setFilter] = useState({operators: operatorsFilters, density: densityFilters})
 
+  function resetFilter() {
+    setSelectedOperators(initialStateOperators)
+    setSelectedDensity(initialStateDensity)
+  }
+
   function onAccept() {
     setFilter({
       operators: operatorsFilters,
@@ -108,11 +113,6 @@ function Filter({openDialog, setOpenDialog, operators, dataToFilter, setFiltered
     })
     setFilteredData(filterData)
   }, [filter]);
-
-  function resetFilter() {
-    setSelectedOperators(initialStateOperators)
-    setSelectedDensity(initialStateDensity)
-  }
 
   return (
     <div className={{width: "100%"}}>
@@ -151,7 +151,6 @@ function Filter({openDialog, setOpenDialog, operators, dataToFilter, setFiltered
                   handleClick={updateState}
                   selectAll={selectAllOperators}/>
               </Grid>
-
               <Grid item>
                 <MultiSelect
                   direction="column"
@@ -162,7 +161,6 @@ function Filter({openDialog, setOpenDialog, operators, dataToFilter, setFiltered
                   selectAll={selectAllDensity}
                 />
               </Grid>
-
             </Grid>
           </Grid>
         </DialogContent>
